@@ -1,10 +1,12 @@
 <template>
   <div class="home">
-    <p ref="paragraph">
+    <p>
       {{ name }} {{ age }}
     </p> 
     <div>
       <button @click="handleClick">click</button>
+      <button @click="age++">incement age</button>
+      <input type="text" v-model="name">
     </div>
   </div>
 </template>
@@ -16,18 +18,16 @@ export default {
   setup() {
     console.log("setup");
 
-    const paragraph = ref(null)
-
-    let name = "mario";
-    let age = 2;
+    const name = ref("mario");
+    const age = ref(2);
 
     const handleClick = () => {
-      console.log(paragraph.value); // output: <p> mario 2 </p>
-      paragraph.value.classList.add('text')
-      paragraph.value.textContent = "hello world"
+      console.log(); // output: <p> mario 2 </p>
+      name.value = "Luigi"
+      age.value = 35
     };
 
-    return { name, age, handleClick, paragraph };
+    return { name, age, handleClick,  };
   }
 };
 </script>
