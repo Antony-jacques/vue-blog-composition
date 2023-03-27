@@ -1,29 +1,25 @@
 <template>
   <div class="home">
-    <h1>ref</h1>
-    <p>{{search}}</p>
-    <input v-model="search"  type="text">
-    <li v-for="name in getName" :key="name">{{ name}}</li>
+  <h1>home</h1>
+    <PostList  :posts="posts" />
 
   </div>
 </template>
 
 <script>
 import { ref, reactive, computed } from 'vue'
+import PostList from '../components/postList.vue'
 export default {
   name: "HomeView",
+  components: { PostList },
   setup() {
-
-    const names= ref(["Mario","Luigi","Koopa","Toad","Bowser","Yoshi"])
-
-    const search = ref('')
-
-    const getName = computed(()=> {
-      return names.value.filter( name => name.includes(search.value))
-    })
+    const posts = [
+      {title: "welcome to the blog", body:'lorem ipsum', id: 1},
+      {title: "top 5 css tips", body:'loem ipsum', id: 2}
+    ]
 
 
-    return { names, search, getName };
+    return { posts };
   }
 };
 </script>
