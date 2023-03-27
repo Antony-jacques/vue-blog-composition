@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    home
+    home {{ name }} {{ age }}
   </div>
 </template>
 
@@ -9,6 +9,15 @@
 
 export default {
   name: 'HomeView',
+  setup(){
+    console.log('setup')
+
+    let name = "mario"
+    let age = 2
+
+    return {name, age}
+  },
+
 
 }
 </script>
