@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {computed } from 'vue'
+import {computed, onUnmounted } from 'vue'
 export default {
   props: ["post"],
 
@@ -14,6 +14,8 @@ export default {
     const snippet = computed(()=>{
         return props.post.body.substring(0,10) + "...."
     })
+
+    onUnmounted(()=> console.log("unmounted !"))
 
     return { snippet }
   }
